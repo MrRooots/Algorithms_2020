@@ -21,7 +21,7 @@ namespace GraphManipulator {
     // The neighbours list of the Graph
     private readonly List<Pair<int, List<int>>> _neighbours = new List<Pair<int, List<int>>>();
     
-    // The Pair structure
+    // The Simple Pair structure
     private struct Pair<T, T1> {
       private T _firstElement;
       private T1 _secondElement;
