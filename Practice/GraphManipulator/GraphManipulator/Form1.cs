@@ -19,7 +19,7 @@ namespace GraphManipulator {
     private List<List<int>> _matrix = new List<List<int>>();
     
     // The neighbours list of the Graph
-    private readonly List<Pair<int, List<int>>> _neighbours = new List<Pair<int, List<int>>>();
+    private readonly List<List<int>> _neighbours = new List<List<int>>();
     
     // The Pair structure
     private struct Pair<T, T1> {
@@ -63,7 +63,7 @@ namespace GraphManipulator {
       
       // Fill the result matrix
       for (var i = 0; i < length; i++) {
-        var currentPair = _neighbours[i].Second();  // The second element of the pair is List<int>
+        var currentPair = _neighbours[i];  // The second element of the pair is List<int>
         var pairLength = currentPair.Count;            // The length of the current pair
         var pairIndex = 0;
         
@@ -88,29 +88,13 @@ namespace GraphManipulator {
       for (var i = 0; i < length; i++) {
         result.Add(new List<int>());
         
-        foreach (var value in _neighbours[i].Second()) {
+        foreach (var value in _neighbours[i]) {
           result[i].Add(value);
         }
       }
 
       return result;
     }
-    
-    // Will run through the Graph using the neighbours list {recursively}
-    private void DeepThroughGraph(int index, List<bool> visited, List<List<int>> neighbours) {
-      visited[index] = true;
-      this.GraphOutput.Text += (index + 1).ToString() + ' ';
-
-      if (neighbours[index].Count > 0) {
-        for (var i = 0; i < neighbours[index].Count; i++) {
-          var value = neighbours[index][i] - 1;
-
-          if (!visited[value]) {
-            DeepThroughGraph(value, visited, neighbours);
-          }
-        }
-      }
-    }  
 
     // Will create a visiting list for the Graph vertexes and launch the DFS search method
     private void RunThroughGraph() {
@@ -121,12 +105,59 @@ namespace GraphManipulator {
         visited.Add(false);
       }
 
-      DeepThroughGraph(0, visited, RebuildNeighbours());
+      DeepFirstSearch(0, visited);    // DFS
+      
+      visited.Clear();
+      for (var i = 0; i < length + 1; i++) {
+        visited.Add(false);
+      }
+      
+      BreadthFirstSearch(0, visited);  // BFS
+    }
+    
+    // Will run through the Graph using the neighbours list {recursively} -> DFS
+    private void DeepFirstSearch(int index, IList<bool> visited) {
+      visited[index] = true;
+      this.GraphOutputDFS.Text += (index + 1).ToString() + ' ';
+
+      if (_neighbours[index].Count > 0) {
+        for (var i = 0; i < _neighbours[index].Count; i++) {
+          var value = _neighbours[index][i] - 1;
+
+          if (!visited[value]) {
+            DeepFirstSearch(value, visited);
+          }
+        }
+      }
     } 
+    
+    // Will run through the Graph using the neighbours list {recursively} -> BFS
+    private void BreadthFirstSearch(int index, List<bool> visited) {
+      visited[index] = true;
+      var queue = new List<int> {index};
+
+      while (queue.Count != 0) {
+        var value = queue[0];
+        this.GraphOutputBFS.Text += (value + 1).ToString() + ' ';
+        queue.RemoveAt(0);
+
+        var pair = _neighbours[value];
+
+        foreach (var x in pair.Where(x => !visited[x - 1])) {
+          visited[x - 1] = true;
+          queue.Add(x - 1);
+        }
+      }
+    }
+    
+    // Will print the shortest way in unweighted Graph
+    private void GetTheShortestWay(int from, int to) {
+        
+    }
     
     
     /* --------------------------- FORM PARTS BUILDERS --------------------------- */
-
+    
     // Will create a text label with the vortex number
     private static Label CreateLabel(int i, string name="", string text="") {
       var label = new Label {
@@ -156,7 +187,7 @@ namespace GraphManipulator {
     }
     
     // Will fill the DataGridView with matrix
-    private void BuildMatrixGridView(List<List<int>> inputMatrix) {
+    private void BuildMatrixGridView(IReadOnlyList<List<int>> inputMatrix) {
       var length = inputMatrix.Count;
 
       matrixView.RowCount = length;
@@ -203,11 +234,11 @@ namespace GraphManipulator {
         var labelText = this.Controls[inputBoxName].Text.Trim(' ');
 
         _neighbours.Add(labelText != ""
-          ? new Pair<int, List<int>>(i, LineToNumbers(labelText))
-          : new Pair<int, List<int>>(i, new List<int>()));
+          ? new List<int>(LineToNumbers(labelText))
+          : new List<int>(new List<int>()));
       }
 
-      _matrix = BuildMatrix();
+      _matrix = BuildMatrix();  // The matrix of the Graph
 
       BuildMatrixGridView(_matrix);
     }
@@ -215,6 +246,10 @@ namespace GraphManipulator {
     // Will recursively run through graph and output them into special label
     private void runThroughGraphButton_Click(object sender, EventArgs e) {
       RunThroughGraph();  // Start run!!!
+    }
+
+    private void calculateWay_Click(object sender, EventArgs e) {
+      GetTheShortestWay(Convert.ToInt32(this.inputFromLabel.Text), Convert.ToInt32(this.inputToLabel.Text));
     }
   }
 }

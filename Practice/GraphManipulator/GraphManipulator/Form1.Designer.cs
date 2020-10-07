@@ -31,8 +31,15 @@
       this.submitVertexCoord = new System.Windows.Forms.Button();
       this.matrixView = new System.Windows.Forms.DataGridView();
       this.outputLabel = new System.Windows.Forms.Label();
-      this.GraphOutput = new System.Windows.Forms.Label();
+      this.GraphOutputDFS = new System.Windows.Forms.Label();
       this.runThrougGraphButton = new System.Windows.Forms.Button();
+      this.GraphOutputBFS = new System.Windows.Forms.Label();
+      this.label3 = new System.Windows.Forms.Label();
+      this.inputFromLabel = new System.Windows.Forms.TextBox();
+      this.label4 = new System.Windows.Forms.Label();
+      this.inputToLabel = new System.Windows.Forms.TextBox();
+      this.graphOutputWay = new System.Windows.Forms.Label();
+      this.calculateWay = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize) (this.matrixView)).BeginInit();
       this.SuspendLayout();
       // 
@@ -71,7 +78,7 @@
       this.submitVertexCount.Name = "submitVertexCount";
       this.submitVertexCount.Size = new System.Drawing.Size(148, 39);
       this.submitVertexCount.TabIndex = 5;
-      this.submitVertexCount.Text = "Enter";
+      this.submitVertexCount.Text = "Enter Count";
       this.submitVertexCount.UseVisualStyleBackColor = true;
       this.submitVertexCount.Click += new System.EventHandler(this.submitVertexCountButton_Click);
       // 
@@ -80,9 +87,9 @@
       this.submitVertexCoord.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
       this.submitVertexCoord.Location = new System.Drawing.Point(377, 85);
       this.submitVertexCoord.Name = "submitVertexCoord";
-      this.submitVertexCoord.Size = new System.Drawing.Size(148, 39);
+      this.submitVertexCoord.Size = new System.Drawing.Size(208, 39);
       this.submitVertexCoord.TabIndex = 6;
-      this.submitVertexCoord.Text = "Enter";
+      this.submitVertexCoord.Text = "Submit Neighbours";
       this.submitVertexCoord.UseVisualStyleBackColor = true;
       this.submitVertexCoord.Click += new System.EventHandler(this.submitVertexCoordButton_Click);
       // 
@@ -108,15 +115,15 @@
       this.outputLabel.Text = "The result matrix:";
       this.outputLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // GraphOutput
+      // GraphOutputDFS
       // 
-      this.GraphOutput.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-      this.GraphOutput.Location = new System.Drawing.Point(377, 615);
-      this.GraphOutput.Name = "GraphOutput";
-      this.GraphOutput.Size = new System.Drawing.Size(600, 40);
-      this.GraphOutput.TabIndex = 9;
-      this.GraphOutput.Text = "Output(DFS): ";
-      this.GraphOutput.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.GraphOutputDFS.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.GraphOutputDFS.Location = new System.Drawing.Point(377, 615);
+      this.GraphOutputDFS.Name = "GraphOutputDFS";
+      this.GraphOutputDFS.Size = new System.Drawing.Size(600, 40);
+      this.GraphOutputDFS.TabIndex = 9;
+      this.GraphOutputDFS.Text = "Output(DFS): ";
+      this.GraphOutputDFS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // runThrougGraphButton
       // 
@@ -129,6 +136,73 @@
       this.runThrougGraphButton.UseVisualStyleBackColor = true;
       this.runThrougGraphButton.Click += new System.EventHandler(this.runThroughGraphButton_Click);
       // 
+      // GraphOutputBFS
+      // 
+      this.GraphOutputBFS.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.GraphOutputBFS.Location = new System.Drawing.Point(377, 655);
+      this.GraphOutputBFS.Name = "GraphOutputBFS";
+      this.GraphOutputBFS.Size = new System.Drawing.Size(600, 40);
+      this.GraphOutputBFS.TabIndex = 11;
+      this.GraphOutputBFS.Text = "Output(BFS): ";
+      this.GraphOutputBFS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // label3
+      // 
+      this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.label3.Location = new System.Drawing.Point(377, 695);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(347, 40);
+      this.label3.TabIndex = 12;
+      this.label3.Text = "Calculate the fastest way from";
+      this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // inputFromLabel
+      // 
+      this.inputFromLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.inputFromLabel.Location = new System.Drawing.Point(730, 698);
+      this.inputFromLabel.Name = "inputFromLabel";
+      this.inputFromLabel.Size = new System.Drawing.Size(45, 39);
+      this.inputFromLabel.TabIndex = 13;
+      // 
+      // label4
+      // 
+      this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.label4.Location = new System.Drawing.Point(781, 695);
+      this.label4.Name = "label4";
+      this.label4.Size = new System.Drawing.Size(40, 40);
+      this.label4.TabIndex = 14;
+      this.label4.Text = "to";
+      this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // inputToLabel
+      // 
+      this.inputToLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.inputToLabel.Location = new System.Drawing.Point(827, 698);
+      this.inputToLabel.Name = "inputToLabel";
+      this.inputToLabel.Size = new System.Drawing.Size(45, 39);
+      this.inputToLabel.TabIndex = 15;
+      // 
+      // graphOutputWay
+      // 
+      this.graphOutputWay.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.graphOutputWay.Location = new System.Drawing.Point(377, 740);
+      this.graphOutputWay.Name = "graphOutputWay";
+      this.graphOutputWay.Size = new System.Drawing.Size(600, 40);
+      this.graphOutputWay.TabIndex = 16;
+      this.graphOutputWay.Text = "Result is:";
+      this.graphOutputWay.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // calculateWay
+      // 
+      this.calculateWay.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.calculateWay.Location = new System.Drawing.Point(878, 695);
+      this.calculateWay.Name = "calculateWay";
+      this.calculateWay.Size = new System.Drawing.Size(139, 44);
+      this.calculateWay.TabIndex = 17;
+      this.calculateWay.Text = "Calculate";
+      this.calculateWay.UseVisualStyleBackColor = true;
+      this.calculateWay.Click += new System.EventHandler(this.calculateWay_Click);
+      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -138,8 +212,15 @@
       this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       this.BackColor = System.Drawing.SystemColors.ButtonFace;
       this.ClientSize = new System.Drawing.Size(1902, 1033);
+      this.Controls.Add(this.calculateWay);
+      this.Controls.Add(this.graphOutputWay);
+      this.Controls.Add(this.inputToLabel);
+      this.Controls.Add(this.label4);
+      this.Controls.Add(this.inputFromLabel);
+      this.Controls.Add(this.label3);
+      this.Controls.Add(this.GraphOutputBFS);
       this.Controls.Add(this.runThrougGraphButton);
-      this.Controls.Add(this.GraphOutput);
+      this.Controls.Add(this.GraphOutputDFS);
       this.Controls.Add(this.outputLabel);
       this.Controls.Add(this.matrixView);
       this.Controls.Add(this.submitVertexCoord);
@@ -154,10 +235,17 @@
       this.PerformLayout();
     }
 
+    private System.Windows.Forms.Button calculateWay;
     private System.Windows.Forms.TextBox countInput;
-    private System.Windows.Forms.Label GraphOutput;
+    private System.Windows.Forms.Label GraphOutputBFS;
+    private System.Windows.Forms.Label GraphOutputDFS;
+    private System.Windows.Forms.Label graphOutputWay;
+    private System.Windows.Forms.TextBox inputFromLabel;
+    private System.Windows.Forms.TextBox inputToLabel;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label2;
+    private System.Windows.Forms.Label label3;
+    private System.Windows.Forms.Label label4;
     private System.Windows.Forms.DataGridView matrixView;
     private System.Windows.Forms.Label outputLabel;
     private System.Windows.Forms.Button runThrougGraphButton;
