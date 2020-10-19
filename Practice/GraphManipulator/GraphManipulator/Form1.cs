@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Schema;
 
 namespace GraphManipulator {
   public partial class Form1 : Form {
@@ -20,21 +21,7 @@ namespace GraphManipulator {
     
     // The neighbours list of the Graph
     private readonly List<List<int>> _neighbours = new List<List<int>>();
-    
-    // The Pair structure
-    private struct Pair<T, T1> {
-      private T _firstElement;
-      private T1 _secondElement;
 
-      public Pair(T first, T1 second) {
-        this._firstElement = first;
-        this._secondElement = second;
-      }
-      
-      public T First() {return this._firstElement;}
-      public T1 Second() { return this._secondElement; }
-    }
-    
     // The Form initialization point
     public Form1() {
       InitializeComponent();
@@ -53,10 +40,10 @@ namespace GraphManipulator {
       var length = _neighbours.Count;   // The size of the matrix
       
       // Fill the matrix by zeroes
-      for (int i = 0; i < length; i++) {
+      for (var i = 0; i < length; i++) {
         _matrix.Add(new List<int>());
         
-        for (int j = 0; j < length; j++) {
+        for (var j = 0; j < length; j++) {
           _matrix[i].Add(0);  
         }
       }
@@ -78,22 +65,6 @@ namespace GraphManipulator {
       }
 
       return _matrix;
-    }
-  
-    // Will rebuild the _neighbours variable into another view
-    private List<List<int>> RebuildNeighbours() {
-      var result = new List<List<int>>();
-      var length = _neighbours.Count;
-
-      for (var i = 0; i < length; i++) {
-        result.Add(new List<int>());
-        
-        foreach (var value in _neighbours[i]) {
-          result[i].Add(value);
-        }
-      }
-
-      return result;
     }
 
     // Will create a visiting list for the Graph vertexes and launch the DFS search method
@@ -132,7 +103,7 @@ namespace GraphManipulator {
     } 
     
     // Will run through the Graph using the neighbours list {recursively} -> BFS
-    private void BreadthFirstSearch(int index, List<bool> visited) {
+    private void BreadthFirstSearch(int index, IList<bool> visited) {
       visited[index] = true;
       var queue = new List<int> {index};
 
@@ -150,9 +121,91 @@ namespace GraphManipulator {
       }
     }
     
+    // Will rebuild the current neighbours list
+    private static void AddToNewNeighbours(List<List<int>> newNeighbours, int from, int to) {
+      newNeighbours[from].Add(to);
+      newNeighbours[to].Add(from);
+    }
+    
+    // Will rebuild _neighbours array for the Shortest Path Search
+    private List<List<int>> RebuildNeighbours() {
+      var newNeighbours = new List<List<int>>();
+
+      for (var i = 0; i < _neighbours.Count; i++) {
+        newNeighbours.Add(new List<int>());
+      }
+      
+      for (var i = 0; i < _neighbours.Count; i++) {
+        for (var j = 0; j < _neighbours[i].Count; j++) {
+          AddToNewNeighbours(newNeighbours, i, _neighbours[i][j] - 1);
+        }
+      }
+
+      return newNeighbours;
+    }
+    
+    // Modified BFS for shortest way search
+    private bool ModifiedBreadthFirstSearch(int from, int to, IList<int> pred) {
+      var queue = new List<int>();     // The queue array
+      var visited = new List<bool>();  // The visited\unvisited array
+      var newNeighbours = RebuildNeighbours();
+      
+      from -= 1;
+      to -= 1;
+      
+      for (var i = 0; i < _neighbours.Count; i++) {
+        visited.Add(false);
+        pred.Add(-1);
+      }
+
+      visited[from] = true;
+      queue.Add(from);
+
+      while (queue.Count != 0) {
+        var index = queue[0];
+        queue.RemoveAt(0);
+
+        for (var i = 0; i < newNeighbours[index].Count; i++) {
+          var tempIndex = newNeighbours[index][i];
+
+          if (!visited[tempIndex]) {
+            visited[tempIndex] = true;
+            pred[tempIndex] = index;
+            queue.Add(tempIndex);
+
+            if (tempIndex == to) { return true; }
+          }
+        }
+      }
+
+      return false;
+    }
+
     // Will print the shortest way in unweighted Graph
     private void GetTheShortestWay(int from, int to) {
-        
+      var pred = new List<int>();              // Predecessor[i] array stores predecessor of i 
+      this.graphOutputWay.Text = @"The shortest way is: ";
+      
+      if (ModifiedBreadthFirstSearch(from, to, pred)) {
+        var path = new List<int>() {to - 1};   // Path array stores the shortest path
+        var element = to - 1;
+      
+        while (pred[element] != -1) {
+          path.Add(pred[element]);
+          element = pred[element];
+        }
+      
+        path.Reverse();
+      
+        foreach (var step in path) {
+          this.graphOutputWay.Text += (step + 1).ToString() + ' ';
+        }
+
+        this.graphOutputWay.Text += @"(Way length: " + path.Count.ToString() + ')';
+      }
+      else {
+        this.graphOutputWay.Text += @"The entered points does not connected!";
+      }
     }
     
     
@@ -194,7 +247,7 @@ namespace GraphManipulator {
       matrixView.ColumnCount = length;
       
       // Fill the headers of the grid
-      for (int i = 0; i < length; i++) {
+      for (var i = 0; i < length; i++) {
         var header = (i + 1).ToString();
         matrixView.Columns[i].HeaderText = header;
         matrixView.Rows[i].HeaderCell.Value = header;
@@ -247,9 +300,30 @@ namespace GraphManipulator {
     private void runThroughGraphButton_Click(object sender, EventArgs e) {
       RunThroughGraph();  // Start run!!!
     }
-
+    
+    // Will print the shortest way from {from} vertex to {to} vertex
     private void calculateWay_Click(object sender, EventArgs e) {
       GetTheShortestWay(Convert.ToInt32(this.inputFromLabel.Text), Convert.ToInt32(this.inputToLabel.Text));
+    }
+    
+    // Will print some of the current variables state into special box {debug function}
+    private void getDebugInfo_Click(object sender, EventArgs e) {
+      var i = 0;
+
+      foreach (var neighbours in _neighbours) {
+        if (i < 9) {
+          this.debugOutput.Text += ++i + @"  | ";
+        }
+        else {
+          this.debugOutput.Text += ++i + @" | ";
+        }
+
+        foreach (var neighbour in neighbours) {
+          this.debugOutput.Text += (neighbour).ToString() + ' ';
+        }
+
+        this.debugOutput.AppendText(Environment.NewLine);
+      }
     }
   }
 }

@@ -40,6 +40,8 @@
       this.inputToLabel = new System.Windows.Forms.TextBox();
       this.graphOutputWay = new System.Windows.Forms.Label();
       this.calculateWay = new System.Windows.Forms.Button();
+      this.debugOutput = new System.Windows.Forms.TextBox();
+      this.getDebugInfo = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize) (this.matrixView)).BeginInit();
       this.SuspendLayout();
       // 
@@ -189,7 +191,7 @@
       this.graphOutputWay.Name = "graphOutputWay";
       this.graphOutputWay.Size = new System.Drawing.Size(600, 40);
       this.graphOutputWay.TabIndex = 16;
-      this.graphOutputWay.Text = "Result is:";
+      this.graphOutputWay.Text = "The shortest way: ";
       this.graphOutputWay.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // calculateWay
@@ -203,15 +205,37 @@
       this.calculateWay.UseVisualStyleBackColor = true;
       this.calculateWay.Click += new System.EventHandler(this.calculateWay_Click);
       // 
+      // debugOutput
+      // 
+      this.debugOutput.Location = new System.Drawing.Point(983, 167);
+      this.debugOutput.Multiline = true;
+      this.debugOutput.Name = "debugOutput";
+      this.debugOutput.ReadOnly = true;
+      this.debugOutput.Size = new System.Drawing.Size(306, 400);
+      this.debugOutput.TabIndex = 18;
+      this.debugOutput.WordWrap = false;
+      // 
+      // getDebugInfo
+      // 
+      this.getDebugInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.getDebugInfo.Location = new System.Drawing.Point(983, 117);
+      this.getDebugInfo.Name = "getDebugInfo";
+      this.getDebugInfo.Size = new System.Drawing.Size(139, 44);
+      this.getDebugInfo.TabIndex = 19;
+      this.getDebugInfo.Text = "Get Debug Info";
+      this.getDebugInfo.UseVisualStyleBackColor = true;
+      this.getDebugInfo.Click += new System.EventHandler(this.getDebugInfo_Click);
+      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
       this.AutoScroll = true;
-      this.AutoSize = true;
       this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       this.BackColor = System.Drawing.SystemColors.ButtonFace;
-      this.ClientSize = new System.Drawing.Size(1902, 1033);
+      this.ClientSize = new System.Drawing.Size(1902, 953);
+      this.Controls.Add(this.getDebugInfo);
+      this.Controls.Add(this.debugOutput);
       this.Controls.Add(this.calculateWay);
       this.Controls.Add(this.graphOutputWay);
       this.Controls.Add(this.inputToLabel);
@@ -229,6 +253,7 @@
       this.Controls.Add(this.label1);
       this.Controls.Add(this.countInput);
       this.Name = "Form1";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "GraphManipulator";
       ((System.ComponentModel.ISupportInitialize) (this.matrixView)).EndInit();
       this.ResumeLayout(false);
@@ -237,6 +262,8 @@
 
     private System.Windows.Forms.Button calculateWay;
     private System.Windows.Forms.TextBox countInput;
+    private System.Windows.Forms.TextBox debugOutput;
+    private System.Windows.Forms.Button getDebugInfo;
     private System.Windows.Forms.Label GraphOutputBFS;
     private System.Windows.Forms.Label GraphOutputDFS;
     private System.Windows.Forms.Label graphOutputWay;
