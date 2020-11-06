@@ -1,9 +1,0 @@
-C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\GraphManipulator\GraphManipulator\bin\Debug\GraphManipulator.exe.config
-C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\GraphManipulator\GraphManipulator\bin\Debug\GraphManipulator.exe
-C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\GraphManipulator\GraphManipulator\bin\Debug\GraphManipulator.pdb
-C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\GraphManipulator\GraphManipulator\obj\Debug\GraphManipulator.csprojResolveAssemblyReference.cache
-C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\GraphManipulator\GraphManipulator\obj\Debug\GraphManipulator.Properties.Resources.resources
-C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\GraphManipulator\GraphManipulator\obj\Debug\GraphManipulator.csproj.GenerateResource.Cache
-C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\GraphManipulator\GraphManipulator\obj\Debug\GraphManipulator.exe
-C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\GraphManipulator\GraphManipulator\obj\Debug\GraphManipulator.pdb
-C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\GraphManipulator\GraphManipulator\obj\Debug\GraphManipulator.Form1.resources
