@@ -471,7 +471,6 @@ namespace Weighted_Graph_GUI {
     }
     
     private void PrettyPrint(IReadOnlyList<int> distance) {
-      // Vertex        Distance From Source
       waysWeightOutput.Text += Environment.NewLine;
       
       for (var i = 0; i < _weightedVertexCount; i++) {
