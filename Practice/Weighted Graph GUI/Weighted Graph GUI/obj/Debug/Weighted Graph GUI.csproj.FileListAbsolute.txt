@@ -1,0 +1,9 @@
+C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\Weighted Graph GUI\Weighted Graph GUI\bin\Debug\Weighted_Graph_GUI.exe.config
+C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\Weighted Graph GUI\Weighted Graph GUI\bin\Debug\Weighted_Graph_GUI.exe
+C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\Weighted Graph GUI\Weighted Graph GUI\bin\Debug\Weighted_Graph_GUI.pdb
+C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\Weighted Graph GUI\Weighted Graph GUI\obj\Debug\Weighted Graph GUI.csprojResolveAssemblyReference.cache
+C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\Weighted Graph GUI\Weighted Graph GUI\obj\Debug\Weighted_Graph_GUI.Properties.Resources.resources
+C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\Weighted Graph GUI\Weighted Graph GUI\obj\Debug\Weighted Graph GUI.csproj.GenerateResource.Cache
+C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\Weighted Graph GUI\Weighted Graph GUI\obj\Debug\Weighted_Graph_GUI.exe
+C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\Weighted Graph GUI\Weighted Graph GUI\obj\Debug\Weighted_Graph_GUI.pdb
+C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\Weighted Graph GUI\Weighted Graph GUI\obj\Debug\Weighted_Graph_GUI.Form1.resources

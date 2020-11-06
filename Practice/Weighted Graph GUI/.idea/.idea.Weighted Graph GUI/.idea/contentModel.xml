@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\MrRooots\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\MrRooots\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_Weighted Graph GUI.-704145209.00" t="ExcludeRecursive" />
+    <e p="C:\Users\MrRooots\Documents\GitHub\Algorithms_2020\Practice\Weighted Graph GUI" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Weighted Graph GUI" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Form1.cs" t="Include" />
+        <e p="Form1.Designer.cs" t="Include" />
+        <e p="Form1.resx" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="Weighted Graph GUI.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Weighted Graph GUI.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8331f9b9-97f0-45bf-b025-b7f9c216fa16" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/731A2A5A-918C-4C46-9DA9-A4D2DF1FBD9B/9d/fb648302/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5DE66FF1-1FCB-4513-8463-255B392B032B/50/68614389/TypeConverter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Weighted Graph GUI/Form1.Designer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Weighted Graph GUI/Form1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Weighted Graph GUI/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Weighted Graph GUI/Form1.resx" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Weighted Graph GUI/Form1.resx" />
+        <option value="$PROJECT_DIR$/Weighted Graph GUI/Program.cs" />
+        <option value="$PROJECT_DIR$/Weighted Graph GUI/Form1.Designer.cs" />
+        <option value="$PROJECT_DIR$/Weighted Graph GUI/Form1.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jXk2uC56L1LSF3j3UERsXGS2DX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34976044" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.29979467" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.2661448" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Weighted Graph GUI" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Weighted Graph GUI/Weighted Graph GUI.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="Console" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8331f9b9-97f0-45bf-b025-b7f9c216fa16" name="Default Changelist" comment="" />
+      <created>1603957619244</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603957619244</updated>
+      <workItem from="1603957623039" duration="4294000" />
+      <workItem from="1603972372066" duration="11780000" />
+      <workItem from="1603986012614" duration="55000" />
+      <workItem from="1604222306383" duration="2994000" />
+      <workItem from="1604238851086" duration="4353000" />
+      <workItem from="1604317785431" duration="3320000" />
+      <workItem from="1604395438632" duration="667000" />
+      <workItem from="1604583449831" duration="6989000" />
+      <workItem from="1604649653029" duration="1450000" />
+      <workItem from="1604667281046" duration="5238000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603985962780">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1603985962780" />
+    <state x="634" y="379" key="Assembly removing confirmation dialog" timestamp="1603971969477">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="634" y="379" key="Assembly removing confirmation dialog/0.0.1536.824@0.0.1536.824" timestamp="1603971969477" />
+    <state width="512" height="530" key="DebuggerActiveHint" timestamp="1604669386359">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="512" height="530" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1604669386359" />
+    <state width="1492" height="182" key="GridCell.Tab.0.bottom" timestamp="1604672516548">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="182" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604672516548" />
+    <state width="1492" height="182" key="GridCell.Tab.0.center" timestamp="1604672516548">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="182" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604672516548" />
+    <state width="1492" height="182" key="GridCell.Tab.0.left" timestamp="1604672516548">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="182" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604672516548" />
+    <state width="1492" height="182" key="GridCell.Tab.0.right" timestamp="1604672516548">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="182" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604672516548" />
+    <state width="1492" height="319" key="GridCell.Tab.1.bottom" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.1.center" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.1.left" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.1.right" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.2.bottom" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.2.center" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.2.left" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.2.right" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.3.bottom" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.3.center" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.3.left" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.3.right" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.4.bottom" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.4.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.4.center" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.4.center/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.4.left" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.4.left/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state width="1492" height="319" key="GridCell.Tab.4.right" timestamp="1604672163399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1492" height="319" key="GridCell.Tab.4.right/0.0.1536.824@0.0.1536.824" timestamp="1604672163399" />
+    <state x="361" y="144" key="Rider.ProjectTemplateDialog.Size" timestamp="1603957619335">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="144" key="Rider.ProjectTemplateDialog.Size/0.0.1536.824@0.0.1536.824" timestamp="1603957619335" />
+    <state width="768" height="432" key="XDebugger.FullValuePopup" timestamp="1604669365212">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="768" height="432" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1604669365212" />
+    <state x="100" y="100" width="1336" height="664" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1604239614760">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="100" y="100" width="1336" height="664" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1604239614760" />
+    <state x="49" y="140" width="1336" height="664" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603984316983">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="49" y="140" width="1336" height="664" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1603984316983" />
+    <state x="432" y="200" key="run.anything.popup" timestamp="1604669023745">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="432" y="200" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1604669023745" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="DotNetProject">
+        <watch expression="inputPairs" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
