@@ -1,4 +1,4 @@
-﻿﻿﻿﻿namespace Weighted_Graph_GUI {
+﻿﻿﻿﻿﻿﻿namespace Weighted_Graph_GUI {
   partial class Form1 {
     /// <summary>
     /// Required designer variable.
@@ -30,6 +30,8 @@
       this.label1 = new System.Windows.Forms.Label();
       this.vertexCountInput = new System.Windows.Forms.TextBox();
       this.unweightedGraphPanel = new System.Windows.Forms.Panel();
+      this.getAPButton = new System.Windows.Forms.Button();
+      this.apLabel = new System.Windows.Forms.Label();
       this.calculateException = new System.Windows.Forms.Label();
       this.submitException = new System.Windows.Forms.Label();
       this.countException = new System.Windows.Forms.Label();
@@ -46,17 +48,19 @@
       this.submitNeighboursButton = new System.Windows.Forms.Button();
       this.label2 = new System.Windows.Forms.Label();
       this.submitVertexCountButton = new System.Windows.Forms.Button();
-      this.weightedGraphPanel = new System.Windows.Forms.Panel();
-      this.waysWeightOutput = new System.Windows.Forms.TextBox();
-      this.weightTable = new System.Windows.Forms.Label();
-      this.neighboursTable = new System.Windows.Forms.Label();
-      this.label5 = new System.Windows.Forms.Label();
-      this.weightedInputException = new System.Windows.Forms.Label();
-      this.weightedNeighboursSubmitButton = new System.Windows.Forms.Button();
-      this.label7 = new System.Windows.Forms.Label();
-      this.weightedCountSubmitButton = new System.Windows.Forms.Button();
-      this.weightedCountInput = new System.Windows.Forms.TextBox();
       this.label8 = new System.Windows.Forms.Label();
+      this.weightedCountInput = new System.Windows.Forms.TextBox();
+      this.weightedCountSubmitButton = new System.Windows.Forms.Button();
+      this.label7 = new System.Windows.Forms.Label();
+      this.weightedNeighboursSubmitButton = new System.Windows.Forms.Button();
+      this.weightedInputException = new System.Windows.Forms.Label();
+      this.label5 = new System.Windows.Forms.Label();
+      this.neighboursTable = new System.Windows.Forms.Label();
+      this.weightTable = new System.Windows.Forms.Label();
+      this.waysWeightOutput = new System.Windows.Forms.TextBox();
+      this.weightedGraphPanel = new System.Windows.Forms.Panel();
+      this.getBridgesButton = new System.Windows.Forms.Button();
+      this.bridgesLabel = new System.Windows.Forms.Label();
       this.sidePanel.SuspendLayout();
       this.unweightedGraphPanel.SuspendLayout();
       this.weightedGraphPanel.SuspendLayout();
@@ -129,6 +133,10 @@
       // unweightedGraphPanel
       // 
       this.unweightedGraphPanel.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (35)))), ((int) (((byte) (35)))), ((int) (((byte) (35)))));
+      this.unweightedGraphPanel.Controls.Add(this.bridgesLabel);
+      this.unweightedGraphPanel.Controls.Add(this.getBridgesButton);
+      this.unweightedGraphPanel.Controls.Add(this.getAPButton);
+      this.unweightedGraphPanel.Controls.Add(this.apLabel);
       this.unweightedGraphPanel.Controls.Add(this.calculateException);
       this.unweightedGraphPanel.Controls.Add(this.submitException);
       this.unweightedGraphPanel.Controls.Add(this.countException);
@@ -151,6 +159,32 @@
       this.unweightedGraphPanel.Name = "unweightedGraphPanel";
       this.unweightedGraphPanel.Size = new System.Drawing.Size(1202, 929);
       this.unweightedGraphPanel.TabIndex = 1;
+      // 
+      // getAPButton
+      // 
+      this.getAPButton.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (50)))), ((int) (((byte) (50)))), ((int) (((byte) (50)))));
+      this.getAPButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+      this.getAPButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.getAPButton.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.getAPButton.ForeColor = System.Drawing.Color.White;
+      this.getAPButton.Location = new System.Drawing.Point(286, 380);
+      this.getAPButton.Name = "getAPButton";
+      this.getAPButton.Size = new System.Drawing.Size(208, 40);
+      this.getAPButton.TabIndex = 19;
+      this.getAPButton.Text = "Calculate APs";
+      this.getAPButton.UseVisualStyleBackColor = false;
+      this.getAPButton.Click += new System.EventHandler(this.getAPButton_Click);
+      // 
+      // apLabel
+      // 
+      this.apLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.apLabel.ForeColor = System.Drawing.Color.White;
+      this.apLabel.Location = new System.Drawing.Point(500, 379);
+      this.apLabel.Name = "apLabel";
+      this.apLabel.Size = new System.Drawing.Size(492, 40);
+      this.apLabel.TabIndex = 18;
+      this.apLabel.Text = "Articulation points: ";
+      this.apLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // calculateException
       // 
@@ -342,103 +376,26 @@
       this.submitVertexCountButton.UseVisualStyleBackColor = false;
       this.submitVertexCountButton.Click += new System.EventHandler(this.submitVertexCountButton_Click);
       // 
-      // weightedGraphPanel
+      // label8
       // 
-      this.weightedGraphPanel.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (35)))), ((int) (((byte) (35)))), ((int) (((byte) (35)))));
-      this.weightedGraphPanel.Controls.Add(this.waysWeightOutput);
-      this.weightedGraphPanel.Controls.Add(this.weightTable);
-      this.weightedGraphPanel.Controls.Add(this.neighboursTable);
-      this.weightedGraphPanel.Controls.Add(this.label5);
-      this.weightedGraphPanel.Controls.Add(this.weightedInputException);
-      this.weightedGraphPanel.Controls.Add(this.weightedNeighboursSubmitButton);
-      this.weightedGraphPanel.Controls.Add(this.label7);
-      this.weightedGraphPanel.Controls.Add(this.weightedCountSubmitButton);
-      this.weightedGraphPanel.Controls.Add(this.weightedCountInput);
-      this.weightedGraphPanel.Controls.Add(this.label8);
-      this.weightedGraphPanel.Location = new System.Drawing.Point(268, 9);
-      this.weightedGraphPanel.Name = "weightedGraphPanel";
-      this.weightedGraphPanel.Size = new System.Drawing.Size(1202, 929);
-      this.weightedGraphPanel.TabIndex = 2;
+      this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.label8.ForeColor = System.Drawing.Color.White;
+      this.label8.Location = new System.Drawing.Point(3, 16);
+      this.label8.Name = "label8";
+      this.label8.Size = new System.Drawing.Size(277, 40);
+      this.label8.TabIndex = 17;
+      this.label8.Text = "Enter count of vertexes:";
+      this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // waysWeightOutput
+      // weightedCountInput
       // 
-      this.waysWeightOutput.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-      this.waysWeightOutput.Location = new System.Drawing.Point(286, 161);
-      this.waysWeightOutput.Multiline = true;
-      this.waysWeightOutput.Name = "waysWeightOutput";
-      this.waysWeightOutput.Size = new System.Drawing.Size(400, 550);
-      this.waysWeightOutput.TabIndex = 35;
-      this.waysWeightOutput.Text = "Vertex        Distance From Source";
-      // 
-      // weightTable
-      // 
-      this.weightTable.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-      this.weightTable.ForeColor = System.Drawing.Color.White;
-      this.weightTable.Location = new System.Drawing.Point(150, 112);
-      this.weightTable.Name = "weightTable";
-      this.weightTable.Size = new System.Drawing.Size(70, 40);
-      this.weightTable.TabIndex = 34;
-      this.weightTable.Text = "Weight";
-      this.weightTable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // neighboursTable
-      // 
-      this.neighboursTable.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-      this.neighboursTable.ForeColor = System.Drawing.Color.White;
-      this.neighboursTable.Location = new System.Drawing.Point(40, 112);
-      this.neighboursTable.Name = "neighboursTable";
-      this.neighboursTable.Size = new System.Drawing.Size(102, 40);
-      this.neighboursTable.TabIndex = 33;
-      this.neighboursTable.Text = "Neighbours";
-      this.neighboursTable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // label5
-      // 
-      this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-      this.label5.ForeColor = System.Drawing.Color.White;
-      this.label5.Location = new System.Drawing.Point(286, 112);
-      this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(900, 40);
-      this.label5.TabIndex = 32;
-      this.label5.Text = "The shortest way is: ";
-      this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // weightedInputException
-      // 
-      this.weightedInputException.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-      this.weightedInputException.ForeColor = System.Drawing.Color.Red;
-      this.weightedInputException.Location = new System.Drawing.Point(500, 16);
-      this.weightedInputException.Name = "weightedInputException";
-      this.weightedInputException.Size = new System.Drawing.Size(168, 40);
-      this.weightedInputException.TabIndex = 22;
-      this.weightedInputException.Text = "Invalid Input!";
-      this.weightedInputException.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // weightedNeighboursSubmitButton
-      // 
-      this.weightedNeighboursSubmitButton.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (50)))), ((int) (((byte) (50)))), ((int) (((byte) (50)))));
-      this.weightedNeighboursSubmitButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-      this.weightedNeighboursSubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.weightedNeighboursSubmitButton.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-      this.weightedNeighboursSubmitButton.ForeColor = System.Drawing.Color.White;
-      this.weightedNeighboursSubmitButton.Location = new System.Drawing.Point(392, 72);
-      this.weightedNeighboursSubmitButton.Name = "weightedNeighboursSubmitButton";
-      this.weightedNeighboursSubmitButton.Size = new System.Drawing.Size(250, 40);
-      this.weightedNeighboursSubmitButton.TabIndex = 21;
-      this.weightedNeighboursSubmitButton.Text = "Submit Neighbours";
-      this.weightedNeighboursSubmitButton.UseVisualStyleBackColor = false;
-      this.weightedNeighboursSubmitButton.Click += new System.EventHandler(this.weightedNeighboursSubmitButton_Click);
-      // 
-      // label7
-      // 
-      this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-      this.label7.ForeColor = System.Drawing.Color.White;
-      this.label7.Location = new System.Drawing.Point(3, 72);
-      this.label7.Name = "label7";
-      this.label7.Size = new System.Drawing.Size(383, 40);
-      this.label7.TabIndex = 20;
-      this.label7.Text = "Enter neighbours for each vertex:";
-      this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.weightedCountInput.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (240)))), ((int) (((byte) (240)))), ((int) (((byte) (240)))));
+      this.weightedCountInput.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.weightedCountInput.Location = new System.Drawing.Point(286, 16);
+      this.weightedCountInput.Multiline = true;
+      this.weightedCountInput.Name = "weightedCountInput";
+      this.weightedCountInput.Size = new System.Drawing.Size(52, 40);
+      this.weightedCountInput.TabIndex = 18;
       // 
       // weightedCountSubmitButton
       // 
@@ -455,26 +412,129 @@
       this.weightedCountSubmitButton.UseVisualStyleBackColor = false;
       this.weightedCountSubmitButton.Click += new System.EventHandler(this.weightedCountSubmitButton_Click);
       // 
-      // weightedCountInput
+      // label7
       // 
-      this.weightedCountInput.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (240)))), ((int) (((byte) (240)))), ((int) (((byte) (240)))));
-      this.weightedCountInput.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-      this.weightedCountInput.Location = new System.Drawing.Point(286, 16);
-      this.weightedCountInput.Multiline = true;
-      this.weightedCountInput.Name = "weightedCountInput";
-      this.weightedCountInput.Size = new System.Drawing.Size(52, 40);
-      this.weightedCountInput.TabIndex = 18;
+      this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.label7.ForeColor = System.Drawing.Color.White;
+      this.label7.Location = new System.Drawing.Point(3, 72);
+      this.label7.Name = "label7";
+      this.label7.Size = new System.Drawing.Size(383, 40);
+      this.label7.TabIndex = 20;
+      this.label7.Text = "Enter neighbours for each vertex:";
+      this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // label8
+      // weightedNeighboursSubmitButton
       // 
-      this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-      this.label8.ForeColor = System.Drawing.Color.White;
-      this.label8.Location = new System.Drawing.Point(3, 16);
-      this.label8.Name = "label8";
-      this.label8.Size = new System.Drawing.Size(277, 40);
-      this.label8.TabIndex = 17;
-      this.label8.Text = "Enter count of vertexes:";
-      this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.weightedNeighboursSubmitButton.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (50)))), ((int) (((byte) (50)))), ((int) (((byte) (50)))));
+      this.weightedNeighboursSubmitButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+      this.weightedNeighboursSubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.weightedNeighboursSubmitButton.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.weightedNeighboursSubmitButton.ForeColor = System.Drawing.Color.White;
+      this.weightedNeighboursSubmitButton.Location = new System.Drawing.Point(392, 72);
+      this.weightedNeighboursSubmitButton.Name = "weightedNeighboursSubmitButton";
+      this.weightedNeighboursSubmitButton.Size = new System.Drawing.Size(250, 40);
+      this.weightedNeighboursSubmitButton.TabIndex = 21;
+      this.weightedNeighboursSubmitButton.Text = "Submit Neighbours";
+      this.weightedNeighboursSubmitButton.UseVisualStyleBackColor = false;
+      this.weightedNeighboursSubmitButton.Click += new System.EventHandler(this.weightedNeighboursSubmitButton_Click);
+      // 
+      // weightedInputException
+      // 
+      this.weightedInputException.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.weightedInputException.ForeColor = System.Drawing.Color.Red;
+      this.weightedInputException.Location = new System.Drawing.Point(500, 16);
+      this.weightedInputException.Name = "weightedInputException";
+      this.weightedInputException.Size = new System.Drawing.Size(168, 40);
+      this.weightedInputException.TabIndex = 22;
+      this.weightedInputException.Text = "Invalid Input!";
+      this.weightedInputException.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label5
+      // 
+      this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.label5.ForeColor = System.Drawing.Color.White;
+      this.label5.Location = new System.Drawing.Point(286, 112);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(900, 40);
+      this.label5.TabIndex = 32;
+      this.label5.Text = "The shortest way is: ";
+      this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // neighboursTable
+      // 
+      this.neighboursTable.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.neighboursTable.ForeColor = System.Drawing.Color.White;
+      this.neighboursTable.Location = new System.Drawing.Point(40, 112);
+      this.neighboursTable.Name = "neighboursTable";
+      this.neighboursTable.Size = new System.Drawing.Size(102, 40);
+      this.neighboursTable.TabIndex = 33;
+      this.neighboursTable.Text = "Neighbours";
+      this.neighboursTable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // weightTable
+      // 
+      this.weightTable.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.weightTable.ForeColor = System.Drawing.Color.White;
+      this.weightTable.Location = new System.Drawing.Point(150, 112);
+      this.weightTable.Name = "weightTable";
+      this.weightTable.Size = new System.Drawing.Size(70, 40);
+      this.weightTable.TabIndex = 34;
+      this.weightTable.Text = "Weight";
+      this.weightTable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // waysWeightOutput
+      // 
+      this.waysWeightOutput.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.waysWeightOutput.Location = new System.Drawing.Point(286, 161);
+      this.waysWeightOutput.Multiline = true;
+      this.waysWeightOutput.Name = "waysWeightOutput";
+      this.waysWeightOutput.Size = new System.Drawing.Size(400, 550);
+      this.waysWeightOutput.TabIndex = 35;
+      this.waysWeightOutput.Text = "Vertex        Distance From Source";
+      // 
+      // weightedGraphPanel
+      // 
+      this.weightedGraphPanel.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (35)))), ((int) (((byte) (35)))), ((int) (((byte) (35)))));
+      this.weightedGraphPanel.Controls.Add(this.waysWeightOutput);
+      this.weightedGraphPanel.Controls.Add(this.weightTable);
+      this.weightedGraphPanel.Controls.Add(this.neighboursTable);
+      this.weightedGraphPanel.Controls.Add(this.label5);
+      this.weightedGraphPanel.Controls.Add(this.weightedInputException);
+      this.weightedGraphPanel.Controls.Add(this.weightedNeighboursSubmitButton);
+      this.weightedGraphPanel.Controls.Add(this.label7);
+      this.weightedGraphPanel.Controls.Add(this.weightedCountSubmitButton);
+      this.weightedGraphPanel.Controls.Add(this.weightedCountInput);
+      this.weightedGraphPanel.Controls.Add(this.label8);
+      this.weightedGraphPanel.Location = new System.Drawing.Point(268, 12);
+      this.weightedGraphPanel.Name = "weightedGraphPanel";
+      this.weightedGraphPanel.Size = new System.Drawing.Size(1202, 929);
+      this.weightedGraphPanel.TabIndex = 2;
+      // 
+      // getBridgesButton
+      // 
+      this.getBridgesButton.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (50)))), ((int) (((byte) (50)))), ((int) (((byte) (50)))));
+      this.getBridgesButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+      this.getBridgesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.getBridgesButton.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.getBridgesButton.ForeColor = System.Drawing.Color.White;
+      this.getBridgesButton.Location = new System.Drawing.Point(286, 426);
+      this.getBridgesButton.Name = "getBridgesButton";
+      this.getBridgesButton.Size = new System.Drawing.Size(208, 40);
+      this.getBridgesButton.TabIndex = 20;
+      this.getBridgesButton.Text = "Calculate bridges";
+      this.getBridgesButton.UseVisualStyleBackColor = false;
+      this.getBridgesButton.Click += new System.EventHandler(this.getBridgesButton_Click);
+      // 
+      // bridgesLabel
+      // 
+      this.bridgesLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+      this.bridgesLabel.ForeColor = System.Drawing.Color.White;
+      this.bridgesLabel.Location = new System.Drawing.Point(500, 426);
+      this.bridgesLabel.Name = "bridgesLabel";
+      this.bridgesLabel.Size = new System.Drawing.Size(492, 40);
+      this.bridgesLabel.TabIndex = 21;
+      this.bridgesLabel.Text = "Bridges: ";
+      this.bridgesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // Form1
       // 
@@ -482,8 +542,8 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (28)))), ((int) (((byte) (28)))), ((int) (((byte) (28)))));
       this.ClientSize = new System.Drawing.Size(1482, 953);
-      this.Controls.Add(this.weightedGraphPanel);
       this.Controls.Add(this.unweightedGraphPanel);
+      this.Controls.Add(this.weightedGraphPanel);
       this.Controls.Add(this.sidePanel);
       this.Name = "Form1";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -497,10 +557,14 @@
     }
 
     private System.Windows.Forms.Label acceptedLabel;
+    private System.Windows.Forms.Label apLabel;
+    private System.Windows.Forms.Label bridgesLabel;
     private System.Windows.Forms.Button calculateButton;
     private System.Windows.Forms.Label calculateException;
     private System.Windows.Forms.Label countException;
     private System.Windows.Forms.TextBox @from;
+    private System.Windows.Forms.Button getAPButton;
+    private System.Windows.Forms.Button getBridgesButton;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Label label3;

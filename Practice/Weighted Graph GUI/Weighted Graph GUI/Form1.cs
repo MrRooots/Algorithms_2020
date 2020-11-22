@@ -1,10 +1,10 @@
-﻿﻿﻿﻿using System;
+﻿﻿﻿﻿﻿﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-   using System.Drawing.Printing;
-   using System.Linq;
+using System.Drawing.Printing;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,9 +13,12 @@ using System.Xml.Schema;
 namespace Weighted_Graph_GUI {
   public partial class Form1 : Form {
     // -------------------------------------------- GLOBAL VARIABLES ------------------------------------------ \\
+    
     // Count of vertexes in UNWEIGHTED Graph
     private int _unweightedVertexesCount;
     private int _weightedVertexCount;
+    private int _time = 0;
+    private int _time1 = 0;
 
     // Special list of neighbours for Unweighted Graph
     private readonly List<List<int>> _neighboursUnweighted = new List<List<int>>();
@@ -28,12 +31,12 @@ namespace Weighted_Graph_GUI {
       InitializeComponent();
       unweightedGraphPanel.Hide();
       weightedGraphPanel.Hide();
-      // Unweighted Panel Exception Labels
-      unweightedGraphPanel.Controls["acceptedLabel"].Visible = false;
-      unweightedGraphPanel.Controls["countException"].Visible = false;
-      unweightedGraphPanel.Controls["submitException"].Visible = false;
-      unweightedGraphPanel.Controls["calculateException"].Visible = false;
-      // Weighted Panel Exception Labels
+      // Unweighted Panel Exceptions Labels
+      unweightedGraphPanel.Controls["acceptedLabel"].Visible        = false;
+      unweightedGraphPanel.Controls["countException"].Visible       = false;
+      unweightedGraphPanel.Controls["submitException"].Visible      = false;
+      unweightedGraphPanel.Controls["calculateException"].Visible   = false;
+      // Weighted Panel Exceptions Labels
       weightedGraphPanel.Controls["weightedInputException"].Visible = false;
       // weightedGraphPanel.Controls["weightedNeighboursException"].Visible = false;
     }
@@ -48,153 +51,11 @@ namespace Weighted_Graph_GUI {
       public T1 First { get; set; }
       public T2 Second { get; set; }
     }
-
-    // -------------------------------------------- MAIN FUNCTIONS ------------------------------------------- \\
-    // Create List of integers from string {will be x-1 foreach x in line}
-    private static List<int> LineToArray(string line) {
-      return line.Trim(' ').Split(' ').Select(number => Convert.ToInt32(number) - 1).ToList();
-    }
-
-    // Will run through Graph via BFS and DFS
-    private void RunThroughGraph() {
-      var length = _neighboursUnweighted.Count;
-      var visited = new List<bool>();
-      outputBfs.Text = @"BFS Output: ";
-      outputDfs.Text = @"DFS Output: ";
-
-      for (var i = 0; i < length + 1; i++) {
-        visited.Add(false);
-      } // Create the visiting list
-
-      DeepFirstSearch(0, visited); // DFS
-
-      for (var i = 0; i < length + 1; i++) {
-        visited[i] = false;
-      } // Clear the list for the BFS
-
-      BreadthFirstSearch(0, visited); // BFS
-    }
-
-    // BFS Realisation
-    private void BreadthFirstSearch(int index, IList<bool> visited) {
-      visited[index] = true;
-      var queue = new List<int> {index};
-
-      while (queue.Count != 0) {
-        var value = queue[0];
-        outputBfs.Text += (value + 1).ToString() + ' ';
-        queue.RemoveAt(0);
-
-        var pair = _neighboursUnweighted[value];
-
-        foreach (var x in pair.Where(x => !visited[x])) {
-          visited[x] = true;
-          queue.Add(x);
-        }
-      }
-    }
-
-    // DFS realisation
-    private void DeepFirstSearch(int index, IList<bool> visited) {
-      visited[index] = true;
-      outputDfs.Text += (index + 1).ToString() + ' ';
-
-      if (_neighboursUnweighted[index].Count <= 0) return;
-      for (var i = 0; i < _neighboursUnweighted[index].Count; i++) {
-        var value = _neighboursUnweighted[index][i];
-
-        if (!visited[value]) {
-          DeepFirstSearch(value, visited);
-        }
-      }
-    }
-
-    // Rebuild the current neighbours list for the shortest way calculation
-    private static void AddToNewNeighbours(IReadOnlyList<List<int>> newNeighbours, int from, int to) {
-      newNeighbours[from].Add(to);
-      newNeighbours[to].Add(from);
-    }
-
-    // Will rebuild _neighbours array for the Shortest Path Search
-    private List<List<int>> RebuildNeighbours() {
-      var newNeighbours = new List<List<int>>();
-
-      for (var i = 0; i < _neighboursUnweighted.Count; i++) {
-        newNeighbours.Add(new List<int>());
-      }
-
-      for (var i = 0; i < _neighboursUnweighted.Count; i++) {
-        for (var j = 0; j < _neighboursUnweighted[i].Count; j++) {
-          AddToNewNeighbours(newNeighbours, i, _neighboursUnweighted[i][j]);
-        }
-      }
-
-      return newNeighbours;
-    }
-
-    // Modified BFS for shortest way search
-    private bool ModifiedBreadthFirstSearch(int sourcePoint, int destinationPoint, IList<int> pred) {
-      var queue = new List<int>(); // The queue array
-      var visited = new List<bool>(); // The visited\unvisited array
-      var newNeighbours = RebuildNeighbours();
-
-      for (var i = 0; i < _neighboursUnweighted.Count; i++) {
-        visited.Add(false);
-        pred.Add(-1);
-      }
-
-      visited[sourcePoint] = true;
-      queue.Add(sourcePoint);
-
-      while (queue.Count != 0) {
-        var index = queue[0];
-        queue.RemoveAt(0);
-
-        for (var i = 0; i < newNeighbours[index].Count; i++) {
-          var tempIndex = newNeighbours[index][i];
-
-          if (visited[tempIndex]) continue;
-          visited[tempIndex] = true;
-          pred[tempIndex] = index;
-          queue.Add(tempIndex);
-
-          if (tempIndex == destinationPoint) {
-            return true;
-          }
-        }
-      }
-
-      return false;
-    }
-
-    // Will print the shortest way in unweighted Graph
-    private void GetTheShortestWay(int sourcePoint, int destinationPoint) {
-      var pred = new List<int>(); // Predecessor[i] array stores predecessor of i 
-      outputShortestWay.Text = @"The shortest way is: ";
-
-      if (ModifiedBreadthFirstSearch(sourcePoint, destinationPoint, pred)) {
-        var path = new List<int>() {destinationPoint}; // Path array stores the shortest path
-        var element = destinationPoint;
-
-        while (pred[element] != -1) {
-          path.Add(pred[element]);
-          element = pred[element];
-        }
-
-        path.Reverse();
-
-        foreach (var step in path) {
-          outputShortestWay.Text += (step + 1).ToString() + ' ';
-        }
-
-        outputShortestWay.Text += @"(Way length: " + path.Count + ')';
-      }
-      else {
-        outputShortestWay.Text += @"The entered points does not connected!";
-      }
-    }
-
+    
+    
     // -------------------------------------------- OBJECT CREATORS ------------------------------------------- \\
+    
+    // Will create a label
     private static Label CreateLabel(int i, bool forWeight = false) {
       string text, name;
       int height;
@@ -263,9 +124,312 @@ namespace Weighted_Graph_GUI {
         return new Tuple<TextBox, TextBox>(input, input);
       }
     }
+    
+    
+    // -------------------------------------------- MAIN FUNCTIONS ------------------------------------------- \\
+    
+    // -------------------------------------------- UNWEIGHTED GRAPH SECTION ---------------------------------- \\
+    
+    // Create List of integers from string {will be x-1 foreach x in line}
+    private static List<int> LineToArray(string line) {
+      return line.Trim(' ').Split(' ').Select(number => Convert.ToInt32(number) - 1).ToList();
+    }
+
+    // Will run through Graph via BFS and DFS
+    private void RunThroughGraph() {
+      var length = _neighboursUnweighted.Count;
+      var visited = new List<bool>();
+      outputBfs.Text = @"BFS Output: ";
+      outputDfs.Text = @"DFS Output: ";
+
+      for (var i = 0; i < length + 1; i++) {
+        visited.Add(false);
+      } // Create the visiting list
+
+      DeepFirstSearch(0, visited); // DFS
+
+      for (var i = 0; i < length + 1; i++) {
+        visited[i] = false;
+      } // Clear the list for the BFS
+
+      BreadthFirstSearch(0, visited); // BFS
+    }
+
+    // BFS Realisation
+    private void BreadthFirstSearch(int index, IList<bool> visited) {
+      visited[index] = true;
+      var queue = new List<int> {index};
+
+      while (queue.Count != 0) {
+        var value = queue[0];
+        outputBfs.Text += (value + 1).ToString() + ' ';
+        queue.RemoveAt(0);
+
+        var pair = _neighboursUnweighted[value];
+
+        foreach (var x in pair.Where(x => !visited[x])) {
+          visited[x] = true;
+          queue.Add(x);
+        }
+      }
+    }
+
+    // DFS realisation
+    private void DeepFirstSearch(int index, IList<bool> visited) {
+      visited[index] = true;
+      outputDfs.Text += (index + 1).ToString() + ' ';
+
+      if (_neighboursUnweighted[index].Count <= 0) return;
+      for (var i = 0; i < _neighboursUnweighted[index].Count; i++) {
+        var value = _neighboursUnweighted[index][i];
+
+        if (!visited[value]) {
+          DeepFirstSearch(value, visited);
+        }
+      }
+    }
+
+    // Rebuild the current neighbours list for the shortest way calculation
+    private static void AddToNewNeighbours(IReadOnlyList<List<int>> newNeighbours, int from, int to) {
+      newNeighbours[from].Add(to);
+      newNeighbours[to].Add(from);
+    }
+
+    // Will rebuild _neighbours array for the Shortest Path Search
+    private List<List<int>> RebuildNeighbours() {
+      var newNeighbours = new List<List<int>>();
+    
+      for (var i = 0; i < _neighboursUnweighted.Count; i++) {
+        newNeighbours.Add(new List<int>());
+      }
+    
+      for (var i = 0; i < _neighboursUnweighted.Count; i++) {
+        for (var j = 0; j < _neighboursUnweighted[i].Count; j++) {
+          AddToNewNeighbours(newNeighbours, i, _neighboursUnweighted[i][j]);
+        }
+      }
+    
+      return newNeighbours;
+    }
+
+    // Modified BFS for shortest way search
+    private bool ModifiedBreadthFirstSearch (int sourcePoint, int destinationPoint, IList<int> pred) {
+      var queue = new List<int>();              // The queue array
+      var visited = new List<bool>();           // The visited\unvisited array
+      var newNeighbours = RebuildNeighbours();  // New neighbours representation
+
+      for (var i = 0; i < _neighboursUnweighted.Count; i++) {
+        visited.Add(false);
+        pred.Add(-1);
+      }
+
+      visited[sourcePoint] = true;
+      queue.Add(sourcePoint);
+
+      while (queue.Count != 0) {
+        var index = queue[0];
+        queue.RemoveAt(0);
+
+        for (var i = 0; i < newNeighbours[index].Count; i++) {
+          var tempIndex = newNeighbours[index][i];
+
+          if (visited[tempIndex]) continue;
+          visited[tempIndex] = true;
+          pred[tempIndex] = index;
+          queue.Add(tempIndex);
+
+          if (tempIndex == destinationPoint) { return true; }
+        }
+      }
+
+      return false;
+    }
+
+    // Will print the shortest way in unweighted Graph
+    private void GetTheShortestWay(int sourcePoint, int destinationPoint) {
+      var pred = new List<int>(); // Predecessor[i] array stores predecessor of i 
+      outputShortestWay.Text = @"The shortest way is: ";
+
+      if (ModifiedBreadthFirstSearch(sourcePoint, destinationPoint, pred)) {
+        var path = new List<int>() {destinationPoint}; // Path array stores the shortest path
+        var element = destinationPoint;
+
+        while (pred[element] != -1) {
+          path.Add(pred[element]);
+          element = pred[element];
+        }
+
+        path.Reverse();
+
+        foreach (var step in path) {
+          outputShortestWay.Text += (step + 1).ToString() + ' ';
+        }
+
+        outputShortestWay.Text += @"(Way length: " + path.Count + ')';
+      }
+      else {
+        outputShortestWay.Text += @"The entered points does not connected!";
+      }
+    }
+    
+    // Recursive utility function {for the GetArticulationPoints()}
+    private void ApUtil(int u, IList<bool> visited, IList<int> disc, IList<int> low, IList<int> parent, IList<bool> articulationPoints) {
+      var children = 0;                                   // Count of children in DFS Tree  
+      var neighbours = RebuildNeighbours();  // Will rebuild neighbours for the search
+      visited[u] = true;                                  // Mark the current node as visited 
+      low[u] = disc[u] = ++_time;                         // Initialize discovery time and low value
+
+      // Go through all vertices adjacent to this 
+      for (var i = 0; i != neighbours[u].Count; ++i) {
+        var v = neighbours[u][i];                     // v is current adjacent of u
+
+        // If v is not visited yet, then make it a child of u in DFS tree and recur for it 
+        if (!visited[v]) {
+          ++children;
+          parent[v] = u;
+          ApUtil(v, visited, disc, low, parent, articulationPoints);
+
+          // Check if the subtree rooted with v has a connection to one of the ancestors of u 
+          low[u] = Math.Min(low[u], low[v]);
+
+          // If u is root of DFS tree and has two or more children. 
+          if (parent[u] == -1 && children > 1) { articulationPoints[u] = true; }
+
+          // If u is not root and low value of one of its child is more than discovery value of u. 
+          if (parent[u] != -1 && low[v] >= disc[u]) { articulationPoints[u] = true; }
+        } 
+  
+        // Update low value of u for parent function calls.
+        else if (v != parent[u]) { low[u] = Math.Min(low[u], disc[v]); }
+      } 
+    } 
+    
+    // Main function to do DFS traversal to find all articulation points of the graph 
+    private void GetArticulationPoints() {
+      var visited            = new List<bool>();
+      var articulationPoints = new List<bool>();
+      var disc               = new List<int>();
+      var low                = new List<int>();
+      var parent             = new List<int>();
+      
+      // Filling the arrays and mark all the vertices as not visited
+      for (var i = 0; i < _unweightedVertexesCount; i++) {
+        visited.Add(false); articulationPoints.Add(false);
+        disc.Add(-1); low.Add(-1); parent.Add(-1);
+      }
+
+      // Call the recursive helper function to find articulation points in DFS tree rooted with vertex 'i' 
+      for (var i = 0; i < _unweightedVertexesCount; i++) {
+        if (!visited[i]) ApUtil(i, visited, disc, low, parent, articulationPoints);
+      }
+
+      // Now ap[] contains articulation points, print them 
+      for (var i = 0; i < _unweightedVertexesCount; i++) { if (articulationPoints[i]) { apLabel.Text += (i + 1).ToString() + ' '; } }
+    }
+    
+    // A recursive function that finds and prints bridges using DFS traversal
+    private void BridgeUtil(int u, IList<bool> visited, IList<int> disc, IList<int> low, IList<int> parent) {
+      var neighbours = RebuildNeighbours();  // Will rebuild neighbours for the search
+      visited[u] = true;                                  // Mark the current node as visited
+      disc[u] = low[u] = ++_time1;                        // Initialize discovery time and low value
+    
+      // Go through all vertices adjacent to this 
+      for (var i = 0; i != neighbours[u].Count; ++i) { 
+          var v = neighbours[u][i];                   // v is current adjacent of u 
+    
+          // If v is not visited yet, then recur for it 
+          if (!visited[v]) {
+            parent[v] = u;
+            BridgeUtil(v, visited, disc, low, parent);
+
+            // Check if the subtree rooted with v has a  connection to one of the ancestors of u 
+            low[u] = Math.Min(low[u], low[v]);
+
+            // If the lowest vertex reachable from subtree under v is  below u in DFS tree, then u-v  is a bridge 
+            if (low[v] > disc[u]) { bridgesLabel.Text += '(' + (u + 1).ToString() + @", " + (v + 1).ToString() + @"), "; }
+
+          } 
+    
+          // Update low value of u for parent function calls. 
+          else if (v != parent[u]) 
+              low[u]  = Math.Min(low[u], disc[v]); 
+      }
+    }
+    
+    // DFS based function to find all bridges. It uses recursive function bridgeUtil() 
+    private void GetBridges() {
+      var visited            = new List<bool>();
+      var disc               = new List<int>();
+      var low                = new List<int>();
+      var parent             = new List<int>();
+      
+      // Filling the arrays and mark all the vertices as not visited
+      for (var i = 0; i < _unweightedVertexesCount; i++) {
+        visited.Add(false); disc.Add(-1); low.Add(-1); parent.Add(-1);
+      }
+
+      for (var i = 0; i < _unweightedVertexesCount; i++) {
+        if (visited[i] == false) BridgeUtil(i, visited, disc, low, parent);
+      }
+    }
+    
+    // -------------------------------------------- WEIGHTED GRAPH SECTION ------------------------------------ \\
+    
+    // An utility function to find the vertex with minimum distance value
+    private int GetMinDistance(IReadOnlyList<int> distance, IReadOnlyList<bool> isInTree) {
+      int min = int.MaxValue, minIndex = 0;
+
+      for (var i = 0; i < _weightedVertexCount; i++) {
+        if (!isInTree[i] && distance[i] <= min) {
+          min = distance[i]; 
+          minIndex = i; 
+        }
+      }
+
+      return minIndex;
+    }
+    
+    // Dijkstra algorithm realization
+    private void DijkstraAlgorithm(IReadOnlyList<List<int>> matrix, int source=0) {
+      var distance = new List<int>();   // The output array.  dist[i] will hold the shortest distance from src to i
+      var isInTree = new List<bool>();  // sptSet[i] will be true if vertex i is included in shortest path tree or shortest distance from src to i is finalized 
+
+      // Initialize all distances as INFINITE and stpSet[] as false 
+      for (var i = 0; i < _weightedVertexCount; i++) { distance.Add(int.MaxValue); isInTree.Add(false); }
+
+      distance[source] = 0;        // Distance of source vertex from itself is always 0 
+
+      // Find shortest path for all vertices 
+      for (var i = 0; i < _weightedVertexCount - 1; i++) {
+        var min = GetMinDistance(distance, isInTree);
+        
+        isInTree[min] = true;  // Mark the picked vertex as processed
+
+        // Update dist value of the adjacent vertices of the picked vertex. 
+        for (var j = 0; j < _weightedVertexCount; j++) {
+          if (!isInTree[j] && matrix[min][j] != 0 && distance[min] != int.MaxValue && distance[min] + matrix[min][j] < distance[j]) {
+            distance[j] = distance[min] + matrix[min][j];
+          }
+        }
+      }
+      
+      PrettyPrint(distance);
+    }
+    
+    // Pretty output into special input
+    private void PrettyPrint(IReadOnlyList<int> distance) {
+      waysWeightOutput.Text += Environment.NewLine;
+      
+      for (var i = 0; i < _weightedVertexCount; i++) {
+        waysWeightOutput.Text += i+1 + @"                 |" + distance[i] + Environment.NewLine;
+      }
+    }
+    
 
     // -------------------------------------------- EVENT HANDLERS -------------------------------------------- \\
-
+    
+    // -------------------------------------------- UNWEIGHTED GRAPH SECTION ---------------------------------- \\
+    
     // Open the Unweighted Graph Control Panel via button click
     private void unweightedGraphButton_Click(object sender, EventArgs e) {
       unweightedGraphPanel.Show();
@@ -313,9 +477,7 @@ namespace Weighted_Graph_GUI {
     }
 
     // Activate BFS and DFS methods and print the results
-    private void runThroughGraphButton_Click(object sender, EventArgs e) {
-      RunThroughGraph();
-    }
+    private void runThroughGraphButton_Click(object sender, EventArgs e) { RunThroughGraph(); }
 
     // Calculate the shortest way from sourcePoint to destinationPoint  
     private void calculateButton_Click(object sender, EventArgs e) {
@@ -340,7 +502,20 @@ namespace Weighted_Graph_GUI {
         calculateException.Visible = true;
       }
     }
+    
+    // Calculate and print all Articulation Points
+    private void getAPButton_Click(object sender, EventArgs e) {
+      GetArticulationPoints();
+    }
+    
+    // Calculate and print bridges of the Graph
+    private void getBridgesButton_Click(object sender, EventArgs e) {
+      GetBridges();
+    }
 
+
+    // -------------------------------------------- WEIGHTED GRAPH SECTION ------------------------------------ \\
+    
     // Open the Weighted Graph Control Panel via button click
     private void weightedGraphButton_Click(object sender, EventArgs e) {
       unweightedGraphPanel.Hide();
@@ -361,7 +536,7 @@ namespace Weighted_Graph_GUI {
 
         // Create labels and input boxes for each vertex
         for (var i = 0; i < _weightedVertexCount; i++) {
-          weightedGraphPanel.Controls.Add(CreateLabel(i, true)); // Create and add label to the current panel
+          weightedGraphPanel.Controls.Add(CreateLabel(i, true)); // Create and add label into current panel
           weightedGraphPanel.Controls.Add(CreateInput(i, true).Item1); // Create input for neighbours
           weightedGraphPanel.Controls.Add(CreateInput(i, true).Item2); // Create special input for weight 
         }
@@ -429,53 +604,5 @@ namespace Weighted_Graph_GUI {
 
       DijkstraAlgorithm(_neighboursWeightedMatrix);
     }
-
-    // An utility function to find the vertex with minimum distance value
-    private int GetMinDistance(IReadOnlyList<int> distance, IReadOnlyList<bool> isInTree) {
-      int min = int.MaxValue, minIndex = 0;
-
-      for (var i = 0; i < _weightedVertexCount; i++) {
-        if (!isInTree[i] && distance[i] <= min) {
-          min = distance[i]; 
-          minIndex = i; 
-        }
-      }
-
-      return minIndex;
-    }
-
-    private void DijkstraAlgorithm(IReadOnlyList<List<int>> matrix, int source=0) {
-      var distance = new List<int>();   // The output array.  dist[i] will hold the shortest distance from src to i
-      var isInTree = new List<bool>();  // sptSet[i] will be true if vertex i is included in shortest path tree or shortest distance from src to i is finalized 
-
-      // Initialize all distances as INFINITE and stpSet[] as false 
-      for (var i = 0; i < _weightedVertexCount; i++) { distance.Add(int.MaxValue); isInTree.Add(false); }
-
-      distance[source] = 0;        // Distance of source vertex from itself is always 0 
-
-      // Find shortest path for all vertices 
-      for (var i = 0; i < _weightedVertexCount - 1; i++) {
-        var min = GetMinDistance(distance, isInTree);
-        
-        isInTree[min] = true;  // Mark the picked vertex as processed
-
-        // Update dist value of the adjacent vertices of the picked vertex. 
-        for (var j = 0; j < _weightedVertexCount; j++) {
-          if (!isInTree[j] && matrix[min][j] != 0 && distance[min] != int.MaxValue && distance[min] + matrix[min][j] < distance[j]) {
-            distance[j] = distance[min] + matrix[min][j];
-          }
-        }
-      }
-      
-      PrettyPrint(distance);
-    }
-    
-    private void PrettyPrint(IReadOnlyList<int> distance) {
-      waysWeightOutput.Text += Environment.NewLine;
-      
-      for (var i = 0; i < _weightedVertexCount; i++) {
-        waysWeightOutput.Text += i + @"                 |" + distance[i] + Environment.NewLine;
-      }
-    } 
   }
 }

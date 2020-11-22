@@ -14,6 +14,7 @@
     <setting file="file://$PROJECT_DIR$/Weighted Graph GUI/Form1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Weighted Graph GUI/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Weighted Graph GUI/Form1.resx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/818D6352-310B-44DD-953B-EEB7A5C7DDFE/ab/6992c101/02000002pdb.il" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -37,7 +38,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="XThreadsFramesViewSplitterKey" value="0.2661448" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager">
     <configuration name="Weighted Graph GUI" type="DotNetProject" factoryName=".NET Project">
@@ -76,7 +79,12 @@
       <workItem from="1604583449831" duration="6989000" />
       <workItem from="1604649653029" duration="1450000" />
       <workItem from="1604667281046" duration="5485000" />
-      <workItem from="1604672836305" duration="90000" />
+      <workItem from="1604672836305" duration="664000" />
+      <workItem from="1604753856275" duration="5571000" />
+      <workItem from="1604824585085" duration="324000" />
+      <workItem from="1605868186378" duration="5140000" />
+      <workItem from="1606037292598" duration="4593000" />
+      <workItem from="1606043018685" duration="2351000" />
     </task>
     <servers />
   </component>
@@ -101,22 +109,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="512" height="530" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1604669386359" />
-    <state width="1492" height="319" key="GridCell.Tab.0.bottom" timestamp="1604672818160">
+    <state width="1492" height="189" key="GridCell.Tab.0.bottom" timestamp="1606045125550">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1492" height="319" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604672818160" />
-    <state width="1492" height="319" key="GridCell.Tab.0.center" timestamp="1604672818160">
+    <state width="1492" height="189" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606045125550" />
+    <state width="1492" height="189" key="GridCell.Tab.0.center" timestamp="1606045125550">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1492" height="319" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604672818160" />
-    <state width="1492" height="319" key="GridCell.Tab.0.left" timestamp="1604672818160">
+    <state width="1492" height="189" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606045125550" />
+    <state width="1492" height="189" key="GridCell.Tab.0.left" timestamp="1606045125550">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1492" height="319" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604672818160" />
-    <state width="1492" height="319" key="GridCell.Tab.0.right" timestamp="1604672818160">
+    <state width="1492" height="189" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606045125550" />
+    <state width="1492" height="189" key="GridCell.Tab.0.right" timestamp="1606045125550">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1492" height="319" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604672818160" />
+    <state width="1492" height="189" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606045125550" />
     <state width="1492" height="319" key="GridCell.Tab.1.bottom" timestamp="1604672818160">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -185,22 +193,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="144" key="Rider.ProjectTemplateDialog.Size/0.0.1536.824@0.0.1536.824" timestamp="1603957619335" />
+    <state x="277" y="77" key="SettingsEditor" timestamp="1604756425829">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="77" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1604756425829" />
     <state width="768" height="432" key="XDebugger.FullValuePopup" timestamp="1604669365212">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="768" height="432" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1604669365212" />
-    <state x="100" y="100" width="1336" height="664" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1604239614760">
+    <state x="100" y="100" width="1336" height="664" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1604758023759">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="100" y="100" width="1336" height="664" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1604239614760" />
+    <state x="100" y="100" width="1336" height="664" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1604758023758" />
     <state x="49" y="140" width="1336" height="664" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603984316983">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="49" y="140" width="1336" height="664" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1603984316983" />
-    <state x="432" y="200" key="run.anything.popup" timestamp="1604669023745">
+    <state x="432" y="200" width="672" height="677" key="run.anything.popup" timestamp="1604824669652">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="432" y="200" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1604669023745" />
+    <state x="432" y="200" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1604824669652" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
