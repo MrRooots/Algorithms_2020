@@ -1,0 +1,164 @@
+Metadata-Version: 2.1
+Name: objectvalidator
+Version: 1.1.0
+Summary: Decorator for validating and caching values returning from methods.
+Home-page: https://blog.seznam.cz/stitek/vyvojari/
+Author: Jan Seifert (Seznam.cz, a.s.)
+Author-email: jan.seifert@firma.seznam.cz
+License: BSD
+Description: objectvalidator
+        ===============
+        
+        Module `objectvalidator` provides functionality for validating and caching
+        values returned from methods.
+        
+        Instalation
+        -----------
+        
+        ::
+        
+            cd objectvalidator/
+            python setup.py install
+        
+        Usage
+        -----
+        
+        `option` decorator validates and caches values returned from methods. Can
+        be used either with arguments or without. If arguments are ommited, value
+        is not validated, only cached. Allowed arguments are **required** and
+        **attrtype**. If **required** is `True`, value returned from method mustn't
+        be `None`. **attrtype** is a type which is allowed for value. Can be either
+        single type or `tuple` containig types.
+        
+        ::
+        
+            @option
+            def foo(self):
+                return ...
+        
+            @option(required=True, attrtype=int)
+            def bar(self):
+                return ...
+        
+            @option(required=True, attrtype=(int, float))
+            def baz(self):
+                return ...
+        
+        `option.get_option_names(inst)` returns `list` containig method's names
+        on *inst* instance which are decorated by `option` decorator.
+        
+        `option.load_all_options(inst)` tries reading values from all methods on
+        *inst* instance which are decorated by `option` decorator. Reading will
+        cause validation of theese values and cache them.
+        
+        `OptionsContainer` class is a container for options methods. During
+        initialization values from all methods decorated by `option` decorator
+        are read . So if class is successfuly initialized, all options are
+        valid a cached.
+        
+        `OptionsContainer.initialize(*args, **kwargs)` initializes instance
+        attributes. You can override this method in the subclasses.
+        
+        Example
+        -------
+        
+        ::
+        
+        	import os
+        
+            from objectvalidator import option, OptionsContainer
+        
+            SETTINGS = {
+                'NAME': 'ExampleApp',
+                'DATABASE': {
+                    'db': 'exampleapp_db',
+                    'host': 'localhost',
+                    'port': 3306,
+                    'user': 'exampleapp-rw',
+                    'password': 'a8RnU43A',
+                },
+            }
+        
+        
+            class Config(OptionsContainer):
+        
+                def initialize(self, settings):
+                    self._settings = settings
+        
+                @option(required=True, attrtype=str)
+                def name(self):
+                    return self._settings['NAME']
+        
+                @option
+                def database(self):
+                    return DatabaseConfig(self._settings['DATABASE'])
+        
+        
+            class DatabaseConfig(OptionsContainer):
+        
+                def initialize(self, database_settings):
+                    self._database_settings = database_settings
+        
+                @option(required=True, attrtype=str)
+                def db(self):
+                    db = os.environ.get('DATABASE_DB')
+                    if db is not None:
+                        return db
+                    return self._database_settings['db']
+        
+                @option(required=True, attrtype=str)
+                def host(self):
+                    host = os.environ.get('DATABASE_HOST')
+                    if host is not None:
+                        return host
+                    return self._database_settings['host']
+        
+                @option(required=True, attrtype=int)
+                def port(self):
+                    port = os.environ.get('DATABASE_PORT')
+                    if port is not None:
+                        return int(port)
+                    return self._database_settings.get('port', 3306)
+        
+                @option(required=True, attrtype=str)
+                def user(self):
+                    user = os.environ.get('DATABASE_USER')
+                    if user is not None:
+                        return user
+                    return self._database_settings['user']
+        
+                @option(required=True, attrtype=str)
+                def password(self):
+                    password = os.environ.get('DATABASE_PASSWORD')
+                    if password is not None:
+                        return password
+                    return self._database_settings['password']
+        
+        
+            >>> config = Config(SETTINGS)
+            >>> config.name
+            'ExampleApp'
+            >>> config.database
+            <DatabaseConfig: db='exampleapp_db', host='localhost', ...>
+            >>> config.database.db
+            'exampleapp_db'
+            >>> option.get_option_names(config)
+            ['database', 'name']
+        
+        License
+        -------
+        
+        3-clause BSD
+        
+Platform: any
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Description-Content-Type: text/x-rst

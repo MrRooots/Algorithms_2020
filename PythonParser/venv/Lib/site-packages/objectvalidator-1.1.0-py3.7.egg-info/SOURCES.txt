@@ -1,0 +1,14 @@
+AUTHORS
+CHANGELOG.rst
+LICENSE
+MANIFEST.in
+README.rst
+objectvalidator.py
+setup.cfg
+setup.py
+tests.py
+objectvalidator.egg-info/PKG-INFO
+objectvalidator.egg-info/SOURCES.txt
+objectvalidator.egg-info/dependency_links.txt
+objectvalidator.egg-info/top_level.txt
+objectvalidator.egg-info/zip-safe
