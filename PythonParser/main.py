@@ -6,11 +6,21 @@ import calendar
 import xlsxwriter
 from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt
-from joblib import Parallel, delayed
+import multiprocessing
 
 URL = 'https://pogoda1.ru/katalog/sverdlovsk-oblast/temperatura-vody/'  # Main site url
 COLLECTED_INFO = {}                                                     # Dict {date: (temp, place)}
 AVERAGE_TEMPERATURES = {}                                               # Dict {date: average_temperature}
+
+
+# Simple decorator to measure time of the function execution
+def measure(func):
+  def wrapper():
+    start = time.time()
+    func()
+    print(f'Time of the "{func.__name__}" execution is: {time.time() - start}')
+
+  return wrapper
 
 
 # Create a list of current month dates
@@ -101,7 +111,9 @@ def parse_it(date) -> None:
 # Collect all information about temperatures (Run all at the same time (xDAY_COUNT speed up!!!) -> write to file)
 def collect_info() -> None:
   open('today.txt', 'w').close()  # Clear the file from previous operations
-  Parallel(n_jobs=-1)(delayed(parse_it)(date) for date in make_dates_list())
+
+  with multiprocessing.Pool(multiprocessing.cpu_count()) as p:
+    p.map(parse_it, make_dates_list())
 
 
 # Parse file and sort the info by date
@@ -119,13 +131,12 @@ def format_collected_info():
 
 
 # Main [\0_0/]
+@measure
 def main() -> None:
-  start = time.time()
   collect_info()                  # Collect all information about temperatures
   format_collected_info()
   make_excel()                  # Build excel file from the collected info
   draw_graph()                  # Draw the graph from the collected info
-  print(time.time() - start)
 
 
 # Script enter point
